@@ -85,11 +85,8 @@ public class Player
         if (line.IntersectsWith(enemyCircle))
         {
             pixel.SetPixel(0, 0, Color.red);
-            GUI.color = Color.red;
         }
-        else { pixel.SetPixel(0, 0, Color.white);
-            GUI.color = Color.white;
-        }
+        else { pixel.SetPixel(0, 0, Color.white); }
 
         GUI.DrawTexture(new Rect(Position.x, Position.y, distanceTraveled, 1.0f), pixel);
 
