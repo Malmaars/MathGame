@@ -36,6 +36,8 @@ public class Game : MonoBehaviour
             enemies.Add(new Enemy(new DevMath.Vector2(Random.Range(.0f, Screen.width), Random.Range(.0f, Screen.height))));
         }
 
+        player.enemyCircle = enemies[0].Circle;
+
         projectiles = new List<Projectile>();
     }
 

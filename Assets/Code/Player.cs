@@ -20,6 +20,8 @@ public class Player
         get; private set;
     }
 
+    public DevMath.Circle enemyCircle;
+
     private Texture2D pixel;
     
     public float Rotation
@@ -73,7 +75,21 @@ public class Player
 
         float distanceTraveled = DevMath.DevMath.DistanceTraveled(fireVelocity, fireAcceleration, Projectile.LIFETIME);
 
+
+        DevMath.Line line = new DevMath.Line();
+        line.Position = Position;
+        line.Length = distanceTraveled;
+        line.Direction = Direction;
+
         //Implementeer de Line class met de IntersectsWith(Circle) functie en gebruik deze om de lijn rood te kleuren wanneer je een enemy zou raken
+        if (line.IntersectsWith(enemyCircle))
+        {
+            pixel.SetPixel(0, 0, Color.red);
+            GUI.color = Color.red;
+        }
+        else { pixel.SetPixel(0, 0, Color.white);
+            GUI.color = Color.white;
+        }
 
         GUI.DrawTexture(new Rect(Position.x, Position.y, distanceTraveled, 1.0f), pixel);
 
